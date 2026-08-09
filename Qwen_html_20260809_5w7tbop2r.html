@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Диана Авдалян — Графический веб-дизайнер</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --black: #111111;
+    --dark: #333333;
+    --gray: #888888;
+    --light: #e8e8e8;
+  }
+
+  body {
+    font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+    background: #f4f4f4;
+    color: var(--black);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page {
+    max-width: 820px;
+    margin: 40px auto;
+    background: #ffffff;
+    padding: 72px 80px;
+  }
+
+  /* ---------- Шапка ---------- */
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 40px;
+    margin-bottom: 48px;
+  }
+
+  h1 {
+    font-size: 40px;
+    font-weight: 700;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    line-height: 1.1;
+  }
+
+  .subtitle {
+    font-size: 15px;
+    color: var(--gray);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-top: 12px;
+  }
+
+  .divider {
+    width: 48px;
+    height: 3px;
+    background: var(--black);
+    margin: 28px 0;
+  }
+
+  /* ---------- Фото ----------
+     Фото подключается фоном из файла photo.jpg,
+     лежащего рядом с этим HTML-файлом.
+     Если файла нет — виден серый круг с инициалами. */
+  .photo {
+    position: relative;
+    width: 132px;
+    height: 132px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    background: #f2f2f2;
+    border: 1px solid var(--light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 34px;
+    font-weight: 300;
+    letter-spacing: 2px;
+    color: #aaaaaa;
+  }
+
+  .photo::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background: url('photo.jpg') center / cover no-repeat;
+  }
+
+  /* ---------- Контакты ---------- */
+  .contacts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 32px;
+    font-size: 13px;
+    color: var(--dark);
+  }
+
+  .contacts a { color: var(--dark); text-decoration: none; border-bottom: 1px solid var(--light); }
+  .contacts a:hover { color: var(--black); border-color: var(--black); }
+
+  /* ---------- Секции ---------- */
+  section { margin-bottom: 44px; }
+
+  h2 {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gray);
+    margin-bottom: 24px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--light);
+  }
+
+  /* ---------- Опыт ---------- */
+  .job {
+    display: grid;
+    grid-template-columns: 150px 1fr;
+    gap: 32px;
+    margin-bottom: 32px;
+  }
+  .job:last-child { margin-bottom: 0; }
+
+  .job-date { font-size: 13px; color: var(--gray); padding-top: 2px; }
+
+  .job-role { font-size: 17px; font-weight: 600; margin-bottom: 2px; }
+
+  .job-company { font-size: 13px; color: var(--gray); margin-bottom: 12px; }
+
+  .job ul { list-style: none; }
+
+  .job li {
+    font-size: 14px;
+    color: var(--dark);
+    padding-left: 18px;
+    position: relative;
+    margin-bottom: 6px;
+  }
+
+  .job li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 10px;
+    width: 6px;
+    height: 1px;
+    background: var(--black);
+  }
+
+  /* ---------- Образование ---------- */
+  .edu {
+    display: grid;
+    grid-template-columns: 150px 1fr;
+    gap: 32px;
+    margin-bottom: 20px;
+  }
+  .edu:last-child { margin-bottom: 0; }
+
+  .edu-degree { font-size: 15px; font-weight: 600; }
+  .edu-place { font-size: 13px; color: var(--gray); margin-top: 2px; }
+
+  /* ---------- Навыки ---------- */
+  .skills { display: flex; flex-wrap: wrap; gap: 10px; }
+
+  .skill {
+    font-size: 13px;
+    padding: 7px 16px;
+    border: 1px solid var(--light);
+    border-radius: 2px;
+    color: var(--dark);
+    background: #fafafa;
+  }
+
+  /* ---------- О себе ---------- */
+  .about p {
+    font-size: 14px;
+    color: var(--dark);
+    margin-bottom: 12px;
+    max-width: 640px;
+  }
+
+  .about a { color: var(--black); font-weight: 600; text-decoration: none; border-bottom: 1px solid var(--black); }
+
+  .meta {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    color: var(--gray);
+    margin-top: 8px;
+  }
+
+  /* ---------- Печать и мобильные ---------- */
+  @media print {
+    body { background: #fff; }
+    .page { margin: 0; padding: 48px 56px; max-width: 100%; }
+  }
+
+  @media (max-width: 640px) {
+    .page { padding: 40px 28px; margin: 0; }
+    header { flex-direction: column-reverse; gap: 24px; }
+    .job, .edu { grid-template-columns: 1fr; gap: 4px; }
+    h1 { font-size: 28px; letter-spacing: 3px; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- ШАПКА -->
+  <header>
+    <div>
+      <h1>Диана Авдалян</h1>
+      <div class="subtitle">Графический веб-дизайнер · UI/UX</div>
+      <div class="divider"></div>
+      <div class="contacts">
+        <span>Псков · готова к переезду и командировкам</span>
+        <a href="tel:+79991679079">+7 (999) 167-90-79</a>
+        <a href="mailto:di_avd@bk.ru">di_avd@bk.ru</a>
+        <a href="https://t.me/di_avdalyan">Telegram</a>
+        <a href="https://www.behance.net/di_avd">Behance</a>
+      </div>
+    </div>
+
+    <!-- ФОТО: положите файл photo.jpg рядом с этим HTML -->
+    <div class="photo">ДА</div>
+  </header>
+
+  <!-- ОПЫТ РАБОТЫ -->
+  <section>
+    <h2>Опыт работы — 10 лет</h2>
+
+    <div class="job">
+      <div class="job-date">Авг 2022 — наст. время<br>4 года</div>
+      <div>
+        <div class="job-role">Ведущий digital-дизайнер / UI/UX-дизайнер</div>
+        <div class="job-company">«CoffeeStudio» digital agency · Псков</div>
+        <ul>
+          <li>Проектирование и разработка digital-продуктов с нуля: сайты, интернет-магазины, личные кабинеты, CRM и обучающие платформы</li>
+          <li>Развитие дизайн-системы: компоненты, токены, масштабируемость интерфейсов</li>
+          <li>Проработка UX-сценариев, использование AI-инструментов (GPT, Cursor, Figma AI, Claude) для ускорения процессов</li>
+          <li>Подготовка интерфейсов к разработке, дизайн-ревью вёрстки</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="job">
+      <div class="job-date">Фев 2021 — Июл 2022<br>1 год 6 мес.</div>
+      <div>
+        <div class="job-role">Ведущий графический дизайнер</div>
+        <div class="job-company">Креативное пространство «Лофт»</div>
+        <ul>
+          <li>Визуальные материалы для digital- и офлайн-коммуникаций, поддержка стиля бренда</li>
+          <li>Дизайн полиграфии, мерча и рекламных материалов, подготовка макетов к производству</li>
+          <li>Визуальное сопровождение мероприятий, систематизация дизайн-материалов</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="job">
+      <div class="job-date">Июн 2016 — Апр 2020<br>3 года 11 мес.</div>
+      <div>
+        <div class="job-role">Ведущий дизайнер / Руководитель креативных проектов</div>
+        <div class="job-company">WIAARTHOUSE · Псков</div>
+        <ul>
+          <li>Руководство визуальным направлением, организация работы команды дизайна и маркетинга</li>
+          <li>Разработка позиционирования бренда, рекламные и интерьерные решения</li>
+          <li>Координация подрядчиков, контроль единого стиля бренда</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="job">
+      <div class="job-date">Сен 2015 — Сен 2016<br>1 год 1 мес.</div>
+      <div>
+        <div class="job-role">Графический дизайнер / UX/UI-дизайнер</div>
+        <div class="job-company">NEXT · Псков</div>
+        <ul>
+          <li>Интерфейсные решения для digital-продуктов и корпоративных ресурсов</li>
+          <li>Фирменные материалы, логотипы и элементы айдентики</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ОБРАЗОВАНИЕ -->
+  <section>
+    <h2>Образование</h2>
+    <div class="edu">
+      <div class="job-date">2023</div>
+      <div>
+        <div class="edu-degree">Магистр · «Электронное образование и цифровые платформы»</div>
+        <div class="edu-place">Псковский государственный университет</div>
+      </div>
+    </div>
+    <div class="edu">
+      <div class="job-date">2015</div>
+      <div>
+        <div class="edu-degree">Бакалавр · «Дизайн»</div>
+        <div class="edu-place">Псковский государственный университет</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- НАВЫКИ -->
+  <section>
+    <h2>Навыки</h2>
+    <div class="skills">
+      <span class="skill">Figma</span>
+      <span class="skill">Adobe Photoshop</span>
+      <span class="skill">Illustrator</span>
+      <span class="skill">InDesign</span>
+      <span class="skill">After Effects</span>
+      <span class="skill">Corel Draw</span>
+      <span class="skill">UI/UX</span>
+      <span class="skill">UI Kit</span>
+      <span class="skill">Web-дизайн</span>
+      <span class="skill">Брендинг</span>
+      <span class="skill">Айдентика</span>
+      <span class="skill">Логотипы</span>
+      <span class="skill">Типографика</span>
+      <span class="skill">Полиграфия</span>
+      <span class="skill">Наружная реклама</span>
+      <span class="skill">Ретушь</span>
+      <span class="skill">Цветокоррекция</span>
+      <span class="skill">HTML/CSS</span>
+      <span class="skill">AI-инструменты</span>
+    </div>
+  </section>
+
+  <!-- О СЕБЕ -->
+  <section class="about">
+    <h2>О себе</h2>
+    <p>Графический дизайнер с опытом 10+ лет. Знаю принципы вёрстки (HTML/CSS) и говорю на одном языке с разработчиками. Берусь за сложные задачи и довожу их до результата — системно, точно и с вниманием к деталям. Преподаю графический дизайн в IT-школе.</p>
+    <p>Два красных диплома. Увлекаюсь ПК-играми, прошла курсы по веб-разработке и геймдизайну. Постоянно учусь и расту профессионально.</p>
+    <p>Портфолио: <a href="https://www.behance.net/di_avd">behance.net/di_avd</a></p>
+  </section>
+
+  <div class="meta">
+    <span>Русский — родной · Английский — A2 · Армянский — A2</span>
+    <span>Права категории B</span>
+  </div>
+
+</div>
+</body>
+</html>
